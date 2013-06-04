@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block corpo %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title></title>
+        <script src="{{ MEDIA_URL }}media/css/twitter/js/jquery-1.7.1.min.js"></script>
+        <script src="{{ MEDIA_URL }}media/css/twitter/js/jquery.validate.min.js"></script>
+        <script src="{{ MEDIA_URL }}media/css/twitter/js/bootstrap.min.js"></script>
+        <script src="{{ MEDIA_URL }}media/css/twitter/js/drop.min.js"></script>
+
+
+        <link href="{{ MEDIA_URL }}media/css/twitter/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{ MEDIA_URL }}media/css/twitter/css/bootstrap-responsive.css" rel="stylesheet">
+        <link href="{{ MEDIA_URL }}media/css/twitter/css/default.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="navbar">
+            <div class="navbar-inner">
+                <ul class="nav">
+                    <li class="active"><a href="#">Início</a></li>
+                    <li><a href="#">Cadastro de Novos Funcionários</a></li>
+                    <form class="navbar-search pull-left">
+                        <input type="text" class="search-query" placeholder="Busca">
+                    </form>      
+                </ul>
+            </div>
+        </div>
+        
+        <img id="register_form" src = "{{ MEDIA_URL }}media/css/twitter/img/Comm.jpg" />
+        
+    </body>
+</html>

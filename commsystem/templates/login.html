@@ -1,92 +1,19 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block corpo %}
+{% if form.errors %}
+	{{ form.non_field_erros }}
+{% endif %} 
 
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title></title>
-        <script src="{{ MEDIA_URL }}media/css/twitter/js/jquery-1.7.1.min.js"></script>
-        <script src="{{ MEDIA_URL }}media/css/twitter/js/jquery.validate.min.js"></script>
-        <script src="{{ MEDIA_URL }}media/css/twitter/js/bootstrap.min.js"></script>
-        <script src="{{ MEDIA_URL }}media/css/twitter/js/drop.min.js"></script>
+<form action="." method="post">
+{% csrf_token %}
 
-
-        <link href="{{ MEDIA_URL }}media/css/twitter/css/bootstrap.min.css" rel="stylesheet">
-        <link href="{{ MEDIA_URL }}media/css/twitter/css/bootstrap-responsive.css" rel="stylesheet">
-        <link href="{{ MEDIA_URL }}media/css/twitter/css/default.css" rel="stylesheet">
-
-        <script>
-            $(document).ready(function() {
-                $('#register_form').validate({
-                    rules: {
-                        register_name: {
-                            minlength: 4,
-                            required: true
-                        },
-                        register_password: {
-                            minlength: 3,
-                            required: true
-
-                        }
-                    },
-                    messages: {
-                        register_name: {
-                            minlength: "Nome invalido",
-                            required: "Digite o nome"
-                        },
-                        register_password: {
-                            minlength: "Senha Invalida",
-                            required: "Digite sua senha"
-                        }
-
-                    },
-                    highlight: function(element) {
-                        $(element).closest('.control-group').removeClass('success').addClass('error');
-                    },
-                    success: function(element) {
-                        element
-                                .text('OK!').addClass('valid')
-                                .closest('.control-group').removeClass('error').addClass('success');
-                    }
-                });
-            }); // end document.ready
-        </script>
-    </head>
-    <body>
-        <form id="register_form" action="" method="POST" class="form-horizontal">
-            <img src = "{{ MEDIA_URL }}media/css/twitter/img/Comm.jpg" />
-            <fieldset>
-                <legend> </legend>
-                <div class="control-group">
-                    <label class="control-label" for="register_name">Nome</label>
-                    <div class="controls">
-                        <input type="text" class="input-xlarge" name="register_name" id="register_name" placeholder="Digite seu nome">
-                    </div>
-                </div>
-
-                <div class="control-group">
-                    <label class="control-label" for="register_password">Senha</label>
-                    <div class="controls">
-                        <input type="password" class="input-xlarge" name="register_password" id="register_password" placeholder="Digite sua senha">
-                    </div>
-                </div>
-                
-                <div class="control-group">
-                    <label class="checkbox">
-                        <div class="controls">
-                            <input type="checkbox"> Manter Conectado
-                        </div>
-                    </label>
-                </div>             
-                <legend></legend>
-                <div class="control-group">
-                    <div class="controls">
-                        <button type="submit" class="btn btn-primary">Entrar no Sistema</button>
-                    </div>
-                </div>
-        </form>
-    </body>
-</html>
+<table>
+	<tr><td>{{ form.username.label_tag }}</td><td>{{ form.username }}</td></tr>
+	<tr><td>{{ form.password.label_tag }}</td><td>{{ form.password }}</td></tr>
+	<tr><td colspan="2"><button type="submit">Login</button>
+	<li><a href="/registrar/">Registrar</a></li>
+</table>
+</form>
 
 {% endblock %}

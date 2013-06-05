@@ -14,7 +14,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'wfcre593_commsystem',                      # Or path to database file if using sqlite3.
-        'USER': 'tolf27',                      # Not used with sqlite3.
+        'USER': 'wfcre593_tolf27',                      # Not used with sqlite3.
         'PASSWORD': 'tolf27',                  # Not used with sqlite3.
         'HOST': '50.97.118.51',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
@@ -93,9 +93,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'loguin',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
+    'django.contrib.admindocs',
 )
 LOGIN_URL = "/login/"
 LOGOUT_URL = "/logout/"

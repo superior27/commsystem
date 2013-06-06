@@ -8,12 +8,57 @@
 <form action="." method="post">
 {% csrf_token %}
 
-<table>
+        <link href="{{ MEDIA_URL }}css/twitter/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{ MEDIA_URL }}css/twitter/css/bootstrap-responsive.css" rel="stylesheet">
+        <link href="{{ MEDIA_URL }}css/twitter/css/default.css" rel="stylesheet">
+
+
+
+
+        <center>
+        <form action="" method="POST" class="form-horizontal">
+            <img src = "{{ MEDIA_URL }}css/twitter/img/Comm.jpg" />
+            <fieldset>
+                <legend> </legend>
+                <div class="control-group">
+                    <label class="control-label" for="register_name">Nome</label>
+                    <div class="controls">
+                    <div name="register_name" id="register_name">
+                     {{ form.username }}    
+                     </div>               
+
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="register_password">Senha</label>
+                    <div class="controls">
+                     {{ form.password }} 
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label class="checkbox">
+                        <div class="controls">
+                            <input type="checkbox"> Manter Conectado
+                        </div>
+                    </label>
+                </div>             
+                <legend></legend>
+                <div class="control-group">
+                    <div class="controls">
+                        <button type="submit" class="btn btn-primary">Entrar no Sistema</button>
+                    </div>
+                </div>
+        </form>
+    
+
+<!--<table>
 	<tr><td>{{ form.username.label_tag }}</td><td>{{ form.username }}</td></tr>
 	<tr><td>{{ form.password.label_tag }}</td><td>{{ form.password }}</td></tr>
 	<tr><td colspan="2"><button type="submit">Login</button>
 	<li><a href="/registrar/">Registrar</a></li>
-</table>
+</table> -->
 </form>
 
 {% endblock %}

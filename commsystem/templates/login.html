@@ -5,30 +5,25 @@
 	{{ form.non_field_erros }}
 {% endif %} 
 
-<form action="." method="post">
-{% csrf_token %}
+
 
         <link href="{{ MEDIA_URL }}css/twitter/css/bootstrap.min.css" rel="stylesheet">
         <link href="{{ MEDIA_URL }}css/twitter/css/bootstrap-responsive.css" rel="stylesheet">
         <link href="{{ MEDIA_URL }}css/twitter/css/default.css" rel="stylesheet">
 
+<form id = "register_form" action="." method="post" class = "form-horizontal">
+{% csrf_token %}
 
-
-
-        <center>
-        <form action="" method="POST" class="form-horizontal">
             <img src = "{{ MEDIA_URL }}css/twitter/img/Comm.jpg" />
             <fieldset>
                 <legend> </legend>
-                <div class="control-group">
+                    <div class="control-group">
                     <label class="control-label" for="register_name">Nome</label>
                     <div class="controls">
-                    <div name="register_name" id="register_name">
                      {{ form.username }}    
-                     </div>               
+                     </div>  
+                     </div>             
 
-                    </div>
-                </div>
 
                 <div class="control-group">
                     <label class="control-label" for="register_password">Senha</label>

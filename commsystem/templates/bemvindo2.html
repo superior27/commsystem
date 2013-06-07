@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block corpo %}
+{% csrf_token %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title></title>
+        <script src="{{ MEDIA_URL }}css/twitter/js/jquery-1.7.1.min.js"></script>
+        <script src="{{ MEDIA_URL }}css/twitter/js/jquery.validate.min.js"></script>
+        <script src="{{ MEDIA_URL }}css/twitter/js/bootstrap.min.js"></script>
+        <script src="{{ MEDIA_URL }}css/twitter/js/drop.min.js"></script>
+
+
+        <link href="{{ MEDIA_URL }}css/twitter/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{ MEDIA_URL }}css/twitter/css/bootstrap-responsive.css" rel="stylesheet">
+        <link href="{{ MEDIA_URL }}css/twitter/css/default.css" rel="stylesheet">
+    </head>
+    <body>
+    
+    <div class="container">
+      <div class="masthead">
+        <div class="navbar">
+            </div>
+          </div>
+      </div>
+    
+        <div class="navbar">
+            <div class="navbar-inner">
+                <ul class="nav">
+                    <li class="active"><a href="#">Início</a></li>
+                  
+                      <li><a href="/logout/">Logout</a></li>    
+                </ul>
+            </div>
+        </div>
+        
+        <img id="register_form2" src = "{{ MEDIA_URL }}css/twitter/img/Comm.jpg" class = "form-horizontal"/>
+        
+    </body>
+</html>
+{% endblock %}

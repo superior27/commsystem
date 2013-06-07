@@ -16,8 +16,16 @@ label.error {
     margin-top: 2px;
 }
 
-#register_form2{
+#register_form{
     width: 600px;
     padding: 20px 120px;
     margin: 10px auto 0 auto;
+}
+
+#register_form2{
+	
+	    width: 1000px;
+	    padding: 20px 170px;
+        margin: 20px auto 0 auto;
+	
 }

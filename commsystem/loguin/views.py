@@ -8,6 +8,7 @@ from django.http import HttpResponseRedirect
 from forms import RegisterForm
 from django.contrib.auth.decorators import login_required
 
+
 @login_required
 def bemVindo(request):
     return render_to_response("bemvindo.html",{},
@@ -24,6 +25,11 @@ def registrar(request):
             return render_to_response("registrar.html",{'form':form}, context_instance=RequestContext(request))
     return render_to_response("registrar.html",{'form':RegisterForm()}, context_instance=RequestContext(request))
 
+def grupo(request):
+    if request.method == "POST":    
+        form = RegistrarGrupo(request.POST)
+    
+    return render_to_response("grupo.html",{'form':RegistrarGrupo()}, context_instance=RequestContext(request))
 
 
     

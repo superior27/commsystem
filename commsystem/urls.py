@@ -21,6 +21,7 @@ urlpatterns = patterns('',
     (r'^media/(.*)$', 'django.views.static.serve',{'document_root': settings.MEDIA_ROOT}),
     (r'^registrar/$','loguin.views.registrar'),
     (r'^bemVindo/$','loguin.views.bemVindo'),
+    (r'^grupo/$','grupo.views.grupo'),
 )
 """
 if settings.DEBUG:

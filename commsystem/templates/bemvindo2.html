@@ -19,25 +19,43 @@
         <link href="{{ MEDIA_URL }}css/twitter/css/default.css" rel="stylesheet">
     </head>
     <body>
-    
-    <div class="container">
-      <div class="masthead">
-        <div class="navbar">
-            </div>
-          </div>
-      </div>
-    
-        <div class="navbar">
-            <div class="navbar-inner">
-                <ul class="nav">
-                    <li class="active"><a href="#">Início</a></li>
-                  
-                      <li><a href="/logout/">Logout</a></li>    
-                </ul>
-            </div>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">CommSystem</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">Início</a></li>
+              <li><a href="#contact">Mensagens</a></li>
+              <li><a href="/logout">Logout</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
         </div>
+      </div>
+    </div>
+    <br>
+     <img id="register_form2" src = "{{ MEDIA_URL }}css/twitter/img/Comm.jpg" class = "form-horizontal"/>
+    <div class="container">
+    <br>
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit">
+        <h2><center>Seja Bem Vindo ________</center></h2>
+        <p>Bem Vindo ao CommSystem, o melhor sistema de gerenciamento de comunicação que existe no mercado. Estamos prontos para lhe ajudar, clique no botão SABER MAIS, lá você poderá tirar suas dúvidas.</p>
         
-        <img id="register_form2" src = "{{ MEDIA_URL }}css/twitter/img/Comm.jpg" class = "form-horizontal"/>
+        <p><center><a class="btn btn-primary btn-large">Leia Mais &raquo;</a></center></p>
+      </div>
+      <hr>
+      <footer>
+        <p>&copy; Tripow Software 2013 - Jean Turet, Lucas Lins, Matheus Farias e Stênyo Oliveira</p>
+      </footer>
+    </div> <!-- /container -->
+
         
     </body>
 </html>

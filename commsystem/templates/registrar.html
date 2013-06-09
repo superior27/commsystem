@@ -1,37 +1,50 @@
-         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="{{ MEDIA_URL }}css/twitter/css/bootstrap.css" rel="stylesheet">
         <link href="{{ MEDIA_URL }}css/twitter/css/bootstrap-responsive.css" rel="stylesheet">
         <link href="{{ MEDIA_URL }}css/twitter/css/default.css" rel="stylesheet">
     
-    <div class="container">
-      <div class="masthead">
-        <div class="navbar">
-            </div>
-          </div>
-      </div>
-
-        <div class="navbar">
-            <div class="navbar-inner">
-                <ul class="nav">
-                    <li><a href="/bemVindo">Inicio</a></li>              
-                    <li class="active"><a href="">Cadastro de Novos Funcionarios</a></li>
-                      <li><a href="/logout/">Logout</a></li>    
-                </ul>
-            </div>
+      <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">CommSystem</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li ><a href="/bemVindo">Início</a></li>
+              <li class ="active"><a href="">Cadastro de Novos Funcionários</a></li>
+              <li><a href="#contact">Mensagens</a></li>
+              <li><a href="/logout">Logout</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
         </div>
-
-      
-<form id = "register_form" action="." method="POST" class = "form-horizontal">
+      </div>
+    </div>
+<br>
+<br>
+ <div> 
+ <center>
+ <h2><center>Cadastros de novos usuários</center></h2>
+ <legend></legend>
+ <form id = "register_form" action="." method="POST" class = "form-horizontal">
 
 {% csrf_token %}
 
 	{{ form.as_p }}
-	
-	<legend></legend>
-	<button type="submit" class="btn btn-primary">Criar novo usuário</button>
-	<!--<tr><td colspan="2"><button type="submit">Criar</button> -->
-	
-</table>
-
-
+	<center>
+	<button type="submit" class="btn btn-primary ">Criar novo usuário</button>
+	<!--<tr><td colspan="5"><button type="submit">Criar</button> -->
+	</center>
+	</div>
+ <br>
+ <div class="container">
+      <hr>
+      <footer>
+        <p>&copy; Tripow Software 2013 - Jean Turet, Lucas Lins, Matheus Farias e Stênyo Oliveira</p>
+      </footer>
+      </div>
+      </div>
 </form>

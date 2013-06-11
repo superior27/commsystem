@@ -7,6 +7,11 @@ from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
 from forms import RegisterForm
 from django.contrib.auth.decorators import login_required
+from forms import RegistrarGrupo
+from forms import GrupoPermissao
+from forms import InserirUsuario
+from models import Grupo_Usuario
+from models import Permissao_Grupo
 
 
 @login_required
@@ -14,22 +19,67 @@ def bemVindo(request):
     return render_to_response("bemvindo.html",{},
           context_instance=RequestContext(request))
 
+@login_required
 def registrar(request):
+    #item = Grupo_Usuario.objects.filter(id_usuario = request.user)
+    #permissao = Permissao_Grupo.objects.filter(grupo = item)
+     
+    #if permissao !=0:
     if request.method == "POST":
         form = RegisterForm(request.POST)
+            
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect("/bemVindo/")
+        else:
+            return render_to_response("registrar.html",{'form':form}, 
+                context_instance=RequestContext(request))
+    return render_to_response("registrar.html",{'form':RegisterForm()}, 
+                context_instance=RequestContext(request))
+
+@login_required
+def cadasgrupo(request):
+    if request.method == "POST":    
+        form = RegistrarGrupo(request.POST, request.FILES)
+        
+        if form.is_valid():
+           form.save()
+           return HttpResponseRedirect("/permissaogrupo/")
+        else:
+           return render_to_response("grupo.html",{'form':form},
+             context_instance=RequestContext(request))
+    return render_to_response("grupo.html",{'form':RegistrarGrupo()},
+             context_instance=RequestContext(request))
+        
+@login_required
+def permissaogrupo(request):
+
+    if request.method == "POST":   
+        form = GrupoPermissao(request.POST)
         
         if form.is_valid():
             form.save()
             return HttpResponseRedirect("/bemVindo/")
         else:
-            return render_to_response("registrar.html",{'form':form}, context_instance=RequestContext(request))
-    return render_to_response("registrar.html",{'form':RegisterForm()}, context_instance=RequestContext(request))
+            return render_to_response("grupo.html",{'form':form},
+             context_instance=RequestContext(request))
+    return render_to_response("grupo.html",{'form':GrupoPermissao()},
+             context_instance=RequestContext(request))
 
-def grupo(request):
-    if request.method == "POST":    
-        form = RegistrarGrupo(request.POST)
-    
-    return render_to_response("grupo.html",{'form':RegistrarGrupo()}, context_instance=RequestContext(request))
+@login_required
+def inserirUser(request):
+
+    if request.method == "POST":   
+        form = InserirUsuario(request.POST)
+        
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect("/bemVindo/")
+        else:
+            return render_to_response("grupo.html",{'form':form},
+             context_instance=RequestContext(request))
+    return render_to_response("grupo.html",{'form':InserirUsuario()},
+             context_instance=RequestContext(request))
 
 
     

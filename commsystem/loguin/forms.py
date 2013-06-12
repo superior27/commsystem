@@ -15,6 +15,7 @@ class RegisterForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('username','first_name','last_name','email')
+<<<<<<< HEAD
 
 
 class RegistrarGrupo(forms.ModelForm):
@@ -37,3 +38,5 @@ class tentativa1(forms.ModelForm):
 
 	class Meta:
 		model = Group
+=======
+>>>>>>> d1cea18d92dd9318dba43801e6b164545297edf4

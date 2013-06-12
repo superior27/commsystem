@@ -25,17 +25,64 @@
     </div>
 <br>
 <br>
- <div> 
- <center>
- <h2><center>Cadastros de novos usuários</center></h2>
- <legend></legend>
- <form id = "register_form" action="." method="POST" class = "form-horizontal">
+                <legend> </legend>
+                <div> 
+                   <center>
+                      <h2><center>Cadastros de novos usuários</center></h2>
+                <legend></legend>
+                <legend> </legend>
+
+                
+              <form method="POST">
 
 {% csrf_token %}
 
-	{{ form.as_p }}
+      
+                    <div class="control-group"> 
+                    <div class="controls">
+                    Nome <br/>
+	                {{ form.username }}
+	                {{ form.username.errors }}  
+                     </div>  
+                     </div>  
+                      <div class="control-group"> 
+                    <div class="controls">
+                    Email <br/>
+	                {{ form.email }}
+	                {{ form.email.erros }} 
+                     </div>  
+                     </div> 
+                        <div class="control-group"> 
+                    <div class="controls">
+                    Primeiro nome <br/>
+	                {{ form.first_name }}
+                     </div>  
+                     </div> 
+                    <div class="control-group"> 
+                    <div class="controls">
+                    Sobrenome <br/>
+	                {{ form.last_name }}
+	                
+                     </div>  
+                     </div> 
+                     <div class = "control-group">
+                     <div class="controls">
+                     Digite sua senha <br>
+	                 {{ form.password1 }}
+	                 <br>
+	                 </div>
+	                 </div>
+	                 <div class = "control-group">
+                     <div class="controls">
+	                 Digite novamente sua senha <br>
+	                {{ form.password2 }}
+	                 </div>
+	                 </div>	
 	<center>
-	<button type="submit" class="btn btn-primary ">Criar novo usuário</button>
+	<br>
+	<legend> </legend>
+	<legend> </legend>
+	<button type="submit" class="btn btn-primary">Efetuar cadastro</button>
 	<!--<tr><td colspan="5"><button type="submit">Criar</button> -->
 	</center>
 	</div>
@@ -45,6 +92,5 @@
       <footer>
         <p>&copy; Tripow Software 2013 - Jean Turet, Lucas Lins, Matheus Farias e Stênyo Oliveira</p>
       </footer>
-      </div>
       </div>
 </form>

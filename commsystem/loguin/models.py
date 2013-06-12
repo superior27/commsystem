@@ -29,4 +29,8 @@ class Permissao_Grupo(models.Model):
 	def __unicode__(self):
 		return self.criar_usuario
 
-
+class MyUser(models.Model):
+	class Meta:
+		permissions = (
+			('ver_todos_usuarios','Ver todos os usuarios'),
+			)

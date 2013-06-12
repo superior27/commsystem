@@ -24,6 +24,7 @@ urlpatterns = patterns('',
     (r'^cadasgrupo/$','loguin.views.cadasgrupo'),
     (r'^permissaogrupo/$','loguin.views.permissaogrupo'),
     (r'^inseriUser/$','loguin.views.inserirUser'),
+    (r'^tentativa/$','loguin.views.tentativa'),
 )
 """
 if settings.DEBUG:

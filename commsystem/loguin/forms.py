@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User , Group
 from models import Grupo
 from models import Permissao_Grupo
 from models import Grupo_Usuario
@@ -31,4 +31,9 @@ class GrupoPermissao(forms.ModelForm):
 class InserirUsuario(forms.ModelForm):
 	
 	class Meta:
-		model = Grupo_Usuario		
+		model = Grupo_Usuario	
+
+class tentativa1(forms.ModelForm):
+
+	class Meta:
+		model = Group

@@ -13,6 +13,7 @@ from forms import InserirUsuario
 from models import Grupo_Usuario
 from models import Permissao_Grupo
 from forms import  tentativa1
+from django.contrib.auth.models import User , Group
 
 
 @permission_required('loguin.ver_todos_usuarios')
@@ -35,7 +36,49 @@ def registrar(request):
         form = RegisterForm(request.POST)
               
         if form.is_valid():
-            form.save()
+          """
+          Não foi fácil para que conseguisse fazer isso.
+          Não será fácil para que você consiga entender!
+          :)
+          
+
+          """
+
+            usuario = form.save(commit=False)
+            """ 
+              Aqui em vez de salvar logo o meu form direto no meu BD
+              eu faço com que esse meu form preenchido seja gravado
+              em uma variável que chamei de usuario
+            """
+            group = Group.objects.get(name='God')
+            """
+              Aqui eu crio um variável que receberá um onjeto do tipo
+              Group que tem como nome God, o único grupo cadastrado no caso
+              No caso quando formos ajeitar isso, provavelmente colocaremos
+              um retorno de todos os grupos e todos os usuários, o cara que
+              for cadastrar o usuário dentro do grupo terá que escolher quem
+              ficará em qual grupo
+            """
+            usuario.save()
+            """
+              Salvo o meu usuario dentro do meu BD
+
+            """
+            usuario.groups.add(group)
+            """
+              Aqui é onde a mágica acontece, eu adiciono um usuário a
+              um grupo, já que dentro de usuário a uma foreign key de
+              many to many, se não me engano com todos os grupos que
+              o mesmo está cadastrado, dessa forma utilizo a função
+              add e adiciono o meu grupo
+            """
+
+            """
+            Enfim isso foi só para testar, depois a gente terá
+            fazer um formulário um html e tal...
+            Creio que amanhã(14/06/2013) eu e matheus já concluamos isso.
+
+            """
             return HttpResponseRedirect("/bemVindo/")
         else:
             return render_to_response("registrar.html",{'form':form}, 
@@ -100,4 +143,6 @@ def tentativa(request):
              context_instance=RequestContext(request))
     return render_to_response("grupo.html",{'form':tentativa1()},
              context_instance=RequestContext(request))
+
+
     

@@ -22,7 +22,7 @@ urlpatterns = patterns('',
     (r'^registrar/$','loguin.views.registrar'),
     (r'^bemVindo/$','loguin.views.bemVindo'),
     (r'^tentativa/$','loguin.views.tentativa'),
-    (r'^mudaropcao/$','loguin.views.mudaropcao'),
+    (r'^cadastrarUsuarioGrupo/$','loguin.views.cadastrarUsuarioGrupo'),
 )
 """
 if settings.DEBUG:

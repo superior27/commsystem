@@ -2,7 +2,6 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm , UserChangeForm
 from django.contrib.auth.models import User , Group
 
-
 class RegisterForm(UserCreationForm):
     email = forms.EmailField(label="Email",help_text="")
     first_name = forms.CharField(label="Nome")
@@ -25,11 +24,8 @@ class tentativa1(forms.ModelForm):
 		model = Group
 
 
-class alterar_usuario(UserChangeForm):
+class alterar_usuario(forms.Form):
 	
-	#usuario_opcao = User.object.all()
-	#grupos_opcao = Group.object.get(name)
-	#usuario = forms.ChoiceField(required=True, label='usuario', choices=usuario_opcao)
-	#grupo = forms.ChoiceField(required=True, label='grupo', choices=grupos_opcao)
-	class Meta:
-		model = User
+	Usuario = forms.ModelMultipleChoiceField(queryset= User.objects.all() )
+	Grupo = forms.ModelMultipleChoiceField(queryset = Group.objects.all())
+	

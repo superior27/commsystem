@@ -24,13 +24,10 @@ def registrar(request):
               
         if form.is_valid():
 
-
           usuario = form.save(commit=False)
           group = Group.objects.get(name='God')
 
           usuario.save()
-
-          usuario.groups.add(group)
 
           return HttpResponseRedirect("/bemVindo/")
         else:
@@ -54,21 +51,21 @@ def tentativa(request):
              context_instance=RequestContext(request))
 
 
-def mudaropcao(request):
+def cadastrarUsuarioGrupo(request):
 
     if request.method == "POST":   
         form = alterar_usuario(request.POST)
         
         if form.is_valid():
-            form.save()
-            #usuario = form.save(commit=False)
-            #group = Group.objects.get(name='God')
+            Usuario = form.cleaned_data['Usuario']
+            Grupo = form.cleaned_data['Grupo']
 
-            #usuario.save()
+            usuarioOb = User.objects.get(id = Usuario)
+            groupOb = Group.objects.get(id = Grupo)
+            
+            usuarioOb.groups.add(groupOb)
 
-            #usuario.groups.add(group)
-
-            return HttpResponseRedirect("/mudaropcao/")
+            return HttpResponseRedirect("/cadastrarUsuarioGrupo/")
         else:
             return render_to_response("grupo.html",{'form':form},
              context_instance=RequestContext(request))

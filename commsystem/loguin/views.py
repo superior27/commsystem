@@ -3,11 +3,11 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
-from django.contrib.auth.forms import UserCreationForm , UserChangeForm
+from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
-from forms import RegisterForm , tentativa1 , alterar_usuario
+from forms import RegisterForm , tentativa1 , alterar_usuario, tentativa2
 from django.contrib.auth.decorators import login_required,permission_required
-from django.contrib.auth.models import User , Group
+from django.contrib.auth.models import User , Group ,Permission
 
 
 @permission_required('loguin.ver_todos_usuarios')
@@ -39,15 +39,27 @@ def registrar(request):
 def tentativa(request):
 
     if request.method == "POST":   
-        form = tentativa1(request.POST)
-        
+        form = tentativa2(request.POST)
+
+
         if form.is_valid():
-            form.save()
-            return HttpResponseRedirect("/tentativa/")
+          grupo = form.cleaned_data['Grupo']
+          permissao = form.cleaned_data['Permissao']
+
+          grupoOb = Group.objects.get(id = grupo)
+          permissaoOb = Permission.objects.all()
+           
+          grupoOb.permissions.add(permissaoOb) 
+          #n1 = [permissaoOb]
+
+            #for n2 in n1:
+              #grupoOb.permissions.add(n2)
+            
+          return HttpResponseRedirect("/tentativa/")
         else:
-            return render_to_response("grupo.html",{'form':form},
+            return render_to_response("grupo.html",{'form':form,'n3':n1},
              context_instance=RequestContext(request))
-    return render_to_response("grupo.html",{'form':tentativa1()},
+    return render_to_response("grupo.html",{'form':tentativa2()},
              context_instance=RequestContext(request))
 
 

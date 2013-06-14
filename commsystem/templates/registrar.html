@@ -17,6 +17,7 @@
               <li ><a href="/bemVindo">Início</a></li>
               <li class ="active"><a href="">Cadastro de Novos Funcionários</a></li>
               <li><a href="/tentativa">Cadastro de Grupos</a></li>
+               <li><a href="/cadastrarUsuarioGrupo">Adicionar usuario ao grupo</a></li>
               <li><a href="">Atividades</a></li>
               <li><a href="#contact">Mensagens</a></li>
               <li><a href="/logout">Logout</a></li>
@@ -29,13 +30,13 @@
 <br>
                 <legend> </legend>
                 <div> 
-                   <center>
+             
                       <h2><center>Cadastros de novos usuários</center></h2>
                 <legend></legend>
                 <legend> </legend>
 
                 
-              <form method="POST">
+              <form  id = "register_form3" method="POST">
 
 {% csrf_token %}
 
@@ -51,7 +52,7 @@
                     <div class="controls">
                     Email <br/>
 	                {{ form.email }}
-	                {{ form.email.erros }} 
+	                {{ form.email.errors }} 
                      </div>  
                      </div> 
                         <div class="control-group"> 
@@ -64,7 +65,7 @@
                     <div class="controls">
                     Sobrenome <br/>
 	                {{ form.last_name }}
-	                
+	                {{ form.email.errors }} 
                      </div>  
                      </div> 
                      <div class = "control-group">
@@ -80,19 +81,15 @@
 	                {{ form.password2 }}
 	                 </div>
 	                 </div>	
-	<center>
 	<br>
-	<legend> </legend>
-	<legend> </legend>
 	<button type="submit" class="btn btn-primary">Efetuar cadastro</button>
-	<!--<tr><td colspan="5"><button type="submit">Criar</button> -->
 	</center>
 	</div>
  <br>
  <div class="container">
       <hr>
       <footer>
-        <p>&copy; Tripow Software 2013 - Jean Turet, Lucas Lins, Matheus Farias e Stênyo Oliveira</p>
+        <p>&copy; CommSystem 2013 - Jean Turet, Lucas Lins, Matheus Farias e Stênyo Oliveira</p>
       </footer>
       </div>
 </form>

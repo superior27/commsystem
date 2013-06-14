@@ -18,7 +18,7 @@ label.error {
 
 #register_form{
     width: 600px;
-    padding: 20px 120px;
+    padding: 40px 300px;
     margin: 10px auto 0 auto;
 }
 
@@ -28,4 +28,10 @@ label.error {
 	    padding: 20px 170px;
         margin: 20px auto 0 auto;
 	
+}
+
+#register_form3{
+    width: 600px;
+    padding: 0px 554px;
+    margin: 5px auto 0 auto;
 }

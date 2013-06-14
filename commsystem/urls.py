@@ -21,10 +21,8 @@ urlpatterns = patterns('',
     (r'^media/(.*)$', 'django.views.static.serve',{'document_root': settings.MEDIA_ROOT}),
     (r'^registrar/$','loguin.views.registrar'),
     (r'^bemVindo/$','loguin.views.bemVindo'),
-    (r'^cadasgrupo/$','loguin.views.cadasgrupo'),
-    (r'^permissaogrupo/$','loguin.views.permissaogrupo'),
-    (r'^inseriUser/$','loguin.views.inserirUser'),
     (r'^tentativa/$','loguin.views.tentativa'),
+    (r'^cadastrarUsuarioGrupo/$','loguin.views.cadastrarUsuarioGrupo'),
 )
 """
 if settings.DEBUG:

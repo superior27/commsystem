@@ -39,27 +39,17 @@ def registrar(request):
 def tentativa(request):
 
     if request.method == "POST":   
-        form = tentativa2(request.POST)
+        form = tentativa1(request.POST)
 
 
         if form.is_valid():
-          grupo = form.cleaned_data['Grupo']
-          permissao = form.cleaned_data['Permissao']
-
-          grupoOb = Group.objects.get(id = grupo)
-          permissaoOb = Permission.objects.all()
-           
-          grupoOb.permissions.add(permissaoOb) 
-          #n1 = [permissaoOb]
-
-            #for n2 in n1:
-              #grupoOb.permissions.add(n2)
+          form.save()
             
           return HttpResponseRedirect("/tentativa/")
         else:
-            return render_to_response("grupo.html",{'form':form,'n3':n1},
+            return render_to_response("grupo.html",{'form':form,},
              context_instance=RequestContext(request))
-    return render_to_response("grupo.html",{'form':tentativa2()},
+    return render_to_response("grupo.html",{'form':tentativa1()},
              context_instance=RequestContext(request))
 
 

@@ -20,10 +20,9 @@ class RegisterForm(UserCreationForm):
 
 class tentativa1(forms.ModelForm):
 
-    
 	class Meta:
-		model = Group
-
+	   model = Group
+        
 
 class alterar_usuario(forms.Form):
 	

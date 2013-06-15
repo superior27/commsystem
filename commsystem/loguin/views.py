@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required,permission_required
 from django.contrib.auth.models import User , Group ,Permission
 
 
-@permission_required('loguin.ver_todos_usuarios')
+#@permission_required('loguin.ver_todos_usuarios')
 @login_required
 def bemVindo(request):
     return render_to_response("bemvindo.html",{},
@@ -25,7 +25,6 @@ def registrar(request):
         if form.is_valid():
 
           usuario = form.save(commit=False)
-          group = Group.objects.get(name='God')
 
           usuario.save()
 
@@ -76,26 +75,27 @@ def cadastrarUsuarioGrupo(request):
 
 @login_required
 def atividades(request):
-    
-     if request.method == "POST":   
+    #usuario = request.user
+    #grupoUsuario = usuario.groups.all()
+    if request.method == "POST":   
+      
         form = insereAtividade(request.POST)
-        #usuario = request.user
         #form.fk_group = form.ModelMultipleChoiceField(usuario.group.get())
         if form.is_valid():
-                dados = form.cleaned_data
-                item = Atividade(   
-                            nome = dados['nome'],
-                            descricao = dados['descricao'],
-                            dataInicial = dados['dataInicial'],
-                            dataFinal = dados['dataFinal'],
-                            conclusao = dados['conclusao'],
-                            fk_group = Group.objects.get(id=dados['fk_group']))
-                item.save()
-                return HttpResponseRedirect("/bemVindo/")
+            dados = form.cleaned_data
+            item = Atividade(   
+                        nome = dados['nome'],
+                        descricao = dados['descricao'],
+                        dataInicial = dados['dataInicial'],
+                        dataFinal = dados['dataFinal'],
+                        conclusao = dados['conclusao'],
+                        fk_group = Group.objects.get(id=dados['fk_group']))
+            item.save()
+            return HttpResponseRedirect("/bemVindo/")
         else:
-          return render_to_response("templateAtividade.html",{'form':form}, 
-              context_instance=RequestContext(request))
-     return render_to_response("templateAtividade.html",{'form':insereAtividade()}, 
+            return render_to_response("templateAtividade.html",{'form':form}, 
+                context_instance=RequestContext(request))
+    return render_to_response("templateAtividade.html",{'form':insereAtividade()}, 
               context_instance=RequestContext(request))
     
 

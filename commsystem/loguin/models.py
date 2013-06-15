@@ -18,6 +18,7 @@ class Atividade(models.Model):
 	dataFinal = models.DateField()
 	conclusao = models.BooleanField()
 	fk_group = models.ForeignKey(Group)
+	
 	def __unicode__(self):
 		return self.id_group
 	

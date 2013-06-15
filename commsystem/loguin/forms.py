@@ -45,8 +45,8 @@ class insereAtividade(forms.Form):
     dataFinal = forms.DateField(
                                   widget=forms.DateInput(format='%d/%m/%Y'),
                                   input_formats=['%d/%m/%Y'])
-    #usuarioOb = request.user
-    fk_group = forms.ModelMultipleChoiceField(queryset = Group.objects.all())
+
+    fk_group = forms.ModelMultipleChoiceField(queryset = Group.objects.all()
     class Meta:
        model = Atividade
        fields = ('nome','descrisao','conclusao','dataInicial','dataFinal','fk_group')

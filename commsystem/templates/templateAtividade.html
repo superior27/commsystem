@@ -1,0 +1,19 @@
+<html>
+<head>
+<title> Template de Atividades</title></head>
+
+<body>
+<form method="POST">
+{% csrf_token %}
+
+<table>
+	{{ form.as_p }}
+	<tr><td colspan="2"><button type="submit">Criar</button>
+	
+</table>
+
+
+</form>
+
+</body>
+</html>

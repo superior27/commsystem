@@ -5,7 +5,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
-from forms import RegisterForm , tentativa1 , alterar_usuario, tentativa2
+from forms import RegisterForm , tentativa1 , alterar_usuario, tentativa2 ,insereAtividade
 from django.contrib.auth.decorators import login_required,permission_required
 from django.contrib.auth.models import User , Group ,Permission
 
@@ -73,3 +73,32 @@ def cadastrarUsuarioGrupo(request):
              context_instance=RequestContext(request))
     return render_to_response("grupo.html",{'form':alterar_usuario()},
              context_instance=RequestContext(request))
+
+@login_required
+def atividades(request):
+    
+     if request.method == "POST":   
+        form = insereAtividade(request.POST)
+        #usuario = request.user
+        #form.fk_group = form.ModelMultipleChoiceField(usuario.group.get())
+        if form.is_valid():
+                dados = form.cleaned_data
+                item = Atividade(   
+                            nome = dados['nome'],
+                            descricao = dados['descricao'],
+                            dataInicial = dados['dataInicial'],
+                            dataFinal = dados['dataFinal'],
+                            conclusao = dados['conclusao'],
+                            fk_group = Group.objects.get(id=dados['fk_group']))
+                item.save()
+                return HttpResponseRedirect("/bemVindo/")
+        else:
+          return render_to_response("templateAtividade.html",{'form':form}, 
+              context_instance=RequestContext(request))
+     return render_to_response("templateAtividade.html",{'form':insereAtividade()}, 
+              context_instance=RequestContext(request))
+    
+
+
+"""  
+                            )"""

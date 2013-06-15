@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm , UserChangeForm
 from django.contrib.auth.models import User , Group , Permission
+from models import Atividade
 
 class RegisterForm(UserCreationForm):
     email = forms.EmailField(label="Email",help_text="")
@@ -32,3 +33,20 @@ class alterar_usuario(forms.Form):
 class tentativa2(forms.Form):
 	Permissao = forms.ModelMultipleChoiceField(queryset = Permission.objects.exclude(content_type = 8))
 	Grupo = forms.ModelMultipleChoiceField(queryset = Group.objects.all())
+
+class insereAtividade(forms.Form):
+    
+    nome = forms.CharField()
+    descricao = forms.CharField()
+    conclusao = forms.NullBooleanField()
+    dataInicial = forms.DateField(
+                                  widget=forms.DateInput(format='%d/%m/%Y'),
+                                  input_formats=['%d/%m/%Y'])
+    dataFinal = forms.DateField(
+                                  widget=forms.DateInput(format='%d/%m/%Y'),
+                                  input_formats=['%d/%m/%Y'])
+    #usuarioOb = request.user
+    fk_group = forms.ModelMultipleChoiceField(queryset = Group.objects.all())
+    class Meta:
+       model = Atividade
+       fields = ('nome','descrisao','conclusao','dataInicial','dataFinal','fk_group')

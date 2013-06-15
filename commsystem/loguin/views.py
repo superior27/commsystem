@@ -68,9 +68,9 @@ def cadastrarUsuarioGrupo(request):
 
             return HttpResponseRedirect("/cadastrarUsuarioGrupo/")
         else:
-            return render_to_response("grupo.html",{'form':form},
+            return render_to_response("cadastrarUsuario.html",{'form':form},
              context_instance=RequestContext(request))
-    return render_to_response("grupo.html",{'form':alterar_usuario()},
+    return render_to_response("cadastrarUsuario.html",{'form':alterar_usuario()},
              context_instance=RequestContext(request))
 
 @login_required

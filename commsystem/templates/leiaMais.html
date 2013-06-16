@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block corpo %}
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="{{ MEDIA_URL }}css/twitter/css/bootstrap.css" rel="stylesheet">
+        <link href="{{ MEDIA_URL }}css/twitter/css/bootstrap-responsive.css" rel="stylesheet">
+        <link href="{{ MEDIA_URL }}css/twitter/css/default.css" rel="stylesheet">
+    
+      <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">CommSystem</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li   class ="active"><a href="/bemVindo">Início</a></li>
+              <li><a href="/registrar">Cadastro de Funcionários</a></li>
+              <li><a href="/tentativa">Cadastro de Grupos</a></li>
+              <li><a href="/cadastrarUsuarioGrupo">Adicionar usuario ao grupo</a></li>
+              <li><a href="/atividade/">Criar Atividade</a></li>
+              <li><a href="/lista_atividade">Responder Atividades</a></li>
+              <li><a href="/logout">Logout</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+<br>
+<br>
+<legend></legend>
+<legend></legend>
+<center><h2>Obrigado por escolher o Commsystem</h2></center>
+ <br>
+ <legend></legend>
+<div class="progress progress-info">
+  <div class="bar" style="width: 100%"></div>
+</div>
+<legend></legend>
+<center>
+<h3>Veja algumas vantagens do Commsystem:</h3>
+<br>
+<h4>Com hierarquias bem divididas, apenas você e quem você desejar poderá acessar o sistema através do moderno sistema de login Commsystem:
+ <center><img src = "{{ MEDIA_URL }}css/twitter/img/imagem1.jpg" />
+ <br>
+ <br>
+ <legend></legend>
+<div class="progress progress-info">
+  <div class="bar" style="width: 100%"></div>
+</div>
+<legend></legend>
+ <h4>A tela inicial do sistema é prática e rápida, lá você terá todas as opções a um click de distância:
+ <br>
+ <br>
+ <center><img src = "{{ MEDIA_URL }}css/twitter/img/imagem2.jpg" />
+ <legend></legend>
+ <legend></legend>
+ <legend></legend>
+ 
+     <div class="container">
+      <hr>
+      <footer>
+        <p>&copy; CommSysytem - Jean Turet, Lucas Lins, Matheus Farias e Stênyo Oliveira</p>
+      </footer>
+      </div>
+ 
+
+
+
+ {% endblock %}

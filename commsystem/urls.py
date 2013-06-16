@@ -25,6 +25,7 @@ urlpatterns = patterns('',
     (r'^cadastrarUsuarioGrupo/$','loguin.views.cadastrarUsuarioGrupo'),
     (r'^atividade/$','loguin.views.atividade'),
     (r'^lista_atividade/$','loguin.views.lista_atividade'),
+    (r'^leiaMais/$','loguin.views.leiaMais'),
     (r'^comments/',include('django.contrib.comments.urls')),
 )
 """

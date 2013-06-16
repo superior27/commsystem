@@ -16,6 +16,11 @@ from models import Atividade
 def bemVindo(request):
     return render_to_response("bemvindo.html",{},
           context_instance=RequestContext(request))
+    
+def leiaMais(request):
+    
+     return render_to_response("leiaMais.html",{},
+          context_instance=RequestContext(request))
 
 @login_required
 def registrar(request):
@@ -74,6 +79,8 @@ def cadastrarUsuarioGrupo(request):
              context_instance=RequestContext(request))
     return render_to_response("cadastrarUsuario.html",{'form':alterar_usuario()},
              context_instance=RequestContext(request))
+
+
 
 """Apaguei a anterior estava muito ruim"""
 def atividade(request):

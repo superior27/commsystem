@@ -2,48 +2,108 @@
 {% load comments %}
 
 {% block corpo %}
+{% csrf_token %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title></title>
+        <script src="{{ MEDIA_URL }}css/twitter/js/jquery-1.7.1.min.js"></script>
+        <script src="{{ MEDIA_URL }}css/twitter/js/jquery.validate.min.js"></script>
+        <script src="{{ MEDIA_URL }}css/twitter/js/bootstrap.min.js"></script>
+        <script src="{{ MEDIA_URL }}css/twitter/js/drop.min.js"></script>
+
+
+        <link href="{{ MEDIA_URL }}css/twitter/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{ MEDIA_URL }}css/twitter/css/bootstrap-responsive.css" rel="stylesheet">
+        <link href="{{ MEDIA_URL }}css/twitter/css/default.css" rel="stylesheet">
+    </head>
+    <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">CommSystem</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li><a href="/bemVindo">Início</a></li>
+              <li><a href="/registrar">Cadastro de Funcionários</a></li>
+              <li><a href="/tentativa">Cadastro de Grupos</a></li>
+              <li><a href="/cadastrarUsuarioGrupo">Adicionar Usuário ao Grupo</a></li>
+              <li><a href="/atividade/">Criar Atividade</a></li>
+              <li class = "active"><a href="/lista_atividade">Responder Atividades</a></li>
+              <li><a href="/logout">Logout</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+    <br>
+
 <ul>
-<li><a href="/bemVindo/">Home</a></li>
+<!--<h1>{{permissions}}</h1>-->
+<br>
+<br>
+                <legend> </legend>
+                <div> 
+             
+                <h2><center>Responder Atividades</center></h2>
+                <legend></legend>
+                <legend> </legend>
 
-
-</ul>
-
-<ul>
-
-
-	<!--<h1>{{permissions}}</h1>-->
-	
+<center>	
 <form action="" method="post">
 	{% csrf_token %}
 	
 
-	<h5> Seus grupos são: {{groups}}</h5>
+	<h4><b> Seus grupos são: </b><i>{{groups}}</i></h4>
+	<br>
 	{{form.as_p}}
-	<button type ="submit">Dale</button>
+	<button class="btn btn-primary" type ="submit">Acessar</button>
 </form>
-{% for item in lista_itens %}
+
+</center>
+                <legend></legend>
+                <legend> </legend>
+
+<div id = "register_form4">
+ <table border = "2"/>
+        <br><br>
+        <thead>
+        <th colspan = "10"/>
+
+           {% for item in lista_itens %}
 	<li>
-	
+		<h3>
+		<tr>
+		<th>
+		 <h3><b><i><center><font color = "#00008B">Resumo das Atividades</b></center></h3></font></i>
+		 <legend></legend>
+		 <legend></legend>
+		 <legend></legend>
+			<h3><b><font color="#838B83">Título da atividade: </b></font><i>{{ item.titulo}}<br/></i></h3>
+			<h3><b><font color="#8B7D7B">Descrição: </b></font><i> {{ item.descricao}}<br/></i></h3>
+				<h3><b><font color="#8B7D7B"> Data de Inicio: </b></font><i>{{ item.dataInicial}}<br/></i></h3>
+				<h3><b><font color="#8B7D7B"> Data Final: </b></font><i> {{ item.dataFinal}}<br/></i></h3>
+		   <legend></legend>
+          
 		
-		<link href="{{ MEDIA_URL }}css/twitter/css/bootstrap.min.css" rel="stylesheet"/>
-		<!--  <img src ="imagens/lixeira.png"/>-->
-		<h2>
-		
-			Titulo da atividade: {{ item.titulo}}<br/>
-			Descricao: {{ item.descricao}}<br/>
-			<h3>
-				Data de Inicio: {{ item.dataInicial}}<br/>
-				Data Final: {{ item.dataFinal}}<br/>
-		</h2>
 		<div class="comentarios">
-				<h3>Respostas a Atividade</h3>
+				 <legend></legend>
+				<h3><b><font color="#8B864E">Respostas as Atividades </font><br/></b></h3>
 				{% get_comment_list for item as comentarios %}
 				{% for comentario in comentarios %}
 				<div class="comentario">
 					{% if comentario.name %}
 						Nome: {{comentario.name}}<br/>
 					{% else %} 
-						<h1>Nenhuma 232respostaasasasa</h1>  <br/> 
+						<h1>Nenhuma resposta</h1>  <br/> 
 					{% endif %}
 					
 					{% if comentario.url %}
@@ -54,18 +114,21 @@
 					<hr/>
 				</div>
 				{% endfor %}
+			    <legend></legend>
 				<h3>Enviar Resposta a Atividade</h3>
-				{% render_comment_form for item %}
-
-
-
-
-				
+				{% render_comment_form for item %}				
 		</div>
 	</li>
+	</form>
+
 {% empty %}
-	<li>Sem itens na lista</li>
+Sem elementos na Lista, por favor insira o nome do seu grupo.
+
 {% endfor %}
+</center>
 
 </ul>
+</tr>
+</th>
+
 {% endblock %}

@@ -2,14 +2,57 @@
 
 {% block corpo %}
 
-<form action="" method="post">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="{{ MEDIA_URL }}css/twitter/css/bootstrap.css" rel="stylesheet">
+        <link href="{{ MEDIA_URL }}css/twitter/css/bootstrap-responsive.css" rel="stylesheet">
+        <link href="{{ MEDIA_URL }}css/twitter/css/default.css" rel="stylesheet">
+    
+      <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">CommSystem</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li ><a href="/bemVindo">Início</a></li>
+              <li><a href="">Cadastro de Funcionários</a></li>
+              <li><a href="/tentativa">Cadastro de Grupos</a></li>
+              <li><a href="/cadastrarUsuarioGrupo">Adicionar usuario ao grupo</a></li>
+              <li  class ="active"><a href="/atividade/">Criar Atividade</a></li>
+              <li><a href="/lista_atividade">Responder Atividades</a></li>
+              <li><a href="/logout">Logout</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+<br>
+<br>
+                <legend> </legend>
+                <div> 
+             
+                      <h2><center>Criar novas atividades</center></h2>
+                <legend></legend>
+                <legend> </legend>
+
+<form id ="register_form3" action="" method="post">
 	{% csrf_token %}
 	{{form.as_p}}
 	{{lista_item.as_p}}
-	<button type ="submit">Adicionar</button>
+	<br>
+	<button class="btn btn-primary" type ="submit">Adicionar</button>
 </form>
 
-
+    <div class="container">
+      <hr>
+      <footer>
+        <p>&copy; CommSysytem - Jean Turet, Lucas Lins, Matheus Farias e Stênyo Oliveira</p>
+      </footer>
+      </div>
 
 
 {% endblock %}

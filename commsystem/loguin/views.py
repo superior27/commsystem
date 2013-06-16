@@ -5,9 +5,10 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
-from forms import RegisterForm , tentativa1 , alterar_usuario, tentativa2 ,insereAtividade
+from forms import RegisterForm , tentativa1 , alterar_usuario, tentativa2 ,FormAtividade, FormName
 from django.contrib.auth.decorators import login_required,permission_required
 from django.contrib.auth.models import User , Group ,Permission
+from models import Atividade
 
 
 #@permission_required('loguin.ver_todos_usuarios')
@@ -35,6 +36,7 @@ def registrar(request):
     return render_to_response("registrar.html",{'form':RegisterForm()}, 
               context_instance=RequestContext(request))
 
+@login_required
 def tentativa(request):
 
     if request.method == "POST":   
@@ -51,7 +53,7 @@ def tentativa(request):
     return render_to_response("grupo.html",{'form':tentativa1()},
              context_instance=RequestContext(request))
 
-
+@login_required
 def cadastrarUsuarioGrupo(request):
 
     if request.method == "POST":   
@@ -73,32 +75,29 @@ def cadastrarUsuarioGrupo(request):
     return render_to_response("cadastrarUsuario.html",{'form':alterar_usuario()},
              context_instance=RequestContext(request))
 
+"""Apaguei a anterior estava muito ruim"""
+def atividade(request):
+    if request.method == "POST":
+        form = FormAtividade(request.POST, request.FILES)
+        if form.is_valid():          
+          form.save()
+          return render_to_response("salvo.html")
+    else:
+        form = FormAtividade()
+        
+    form = FormAtividade()
+    return render_to_response("atividade.html",{'form': form},
+      context_instance=RequestContext(request))
+
+
 @login_required
-def atividades(request):
-    #usuario = request.user
-    #grupoUsuario = usuario.groups.all()
+def lista_atividade(request):
+    nome =''
     if request.method == "POST":   
-      
-        form = insereAtividade(request.POST)
-        #form.fk_group = form.ModelMultipleChoiceField(usuario.group.get())
+        form = FormName(request.POST, request.FILES) 
+        
         if form.is_valid():
-            dados = form.cleaned_data
-            item = Atividade(   
-                        nome = dados['nome'],
-                        descricao = dados['descricao'],
-                        dataInicial = dados['dataInicial'],
-                        dataFinal = dados['dataFinal'],
-                        conclusao = dados['conclusao'],
-                        fk_group = Group.objects.get(id=dados['fk_group']))
-            item.save()
-            return HttpResponseRedirect("/bemVindo/")
-        else:
-            return render_to_response("templateAtividade.html",{'form':form}, 
-                context_instance=RequestContext(request))
-    return render_to_response("templateAtividade.html",{'form':insereAtividade()}, 
+            nome = form.cleaned_data['name']                     
+    form = FormName()   
+    return render_to_response("lista_atividade.html",{ 'lista_itens':Atividade.objects.filter(grupo=request.user.groups.filter(name=nome)),'form':form,'groups':request.user.groups.all()},
               context_instance=RequestContext(request))
-    
-
-
-"""  
-                            )"""

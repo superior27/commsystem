@@ -34,19 +34,14 @@ class tentativa2(forms.Form):
 	Permissao = forms.ModelMultipleChoiceField(queryset = Permission.objects.exclude(content_type = 8))
 	Grupo = forms.ModelMultipleChoiceField(queryset = Group.objects.all())
 
-class insereAtividade(forms.Form):
-    
-    nome = forms.CharField()
-    descricao = forms.CharField()
-    conclusao = forms.NullBooleanField()
-    dataInicial = forms.DateField(
-                                  widget=forms.DateInput(format='%d/%m/%Y'),
-                                  input_formats=['%d/%m/%Y'])
-    dataFinal = forms.DateField(
-                                  widget=forms.DateInput(format='%d/%m/%Y'),
-                                  input_formats=['%d/%m/%Y'])
+"""Apaguei o form anterior de atividades, estava ruim"""
 
-    fk_group = forms.ModelMultipleChoiceField(queryset = Group.objects.all()
+class FormAtividade(forms.ModelForm):
     class Meta:
-       model = Atividade
-       fields = ('nome','descrisao','conclusao','dataInicial','dataFinal','fk_group')
+        model = Atividade
+        fields = ('titulo','dataInicial','horaInicial','dataFinal','horaFinal','descricao','grupo')
+
+class FormName (forms.Form):
+    name = forms.CharField(label="Digite o nome de um grupo para visualizar as atividades")
+    class Meta:
+        fields = ('name')

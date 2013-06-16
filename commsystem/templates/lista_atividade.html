@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load comments %}
+
+{% block corpo %}
+<ul>
+<li><a href="/bemVindo/">Home</a></li>
+
+
+</ul>
+
+<ul>
+
+
+	<!--<h1>{{permissions}}</h1>-->
+	
+<form action="" method="post">
+	{% csrf_token %}
+	
+
+	<h5> Seus grupos são: {{groups}}</h5>
+	{{form.as_p}}
+	<button type ="submit">Dale</button>
+</form>
+{% for item in lista_itens %}
+	<li>
+	
+		
+		<link href="{{ MEDIA_URL }}css/twitter/css/bootstrap.min.css" rel="stylesheet"/>
+		<!--  <img src ="imagens/lixeira.png"/>-->
+		<h2>
+		
+			Titulo da atividade: {{ item.titulo}}<br/>
+			Descricao: {{ item.descricao}}<br/>
+			<h3>
+				Data de Inicio: {{ item.dataInicial}}<br/>
+				Data Final: {{ item.dataFinal}}<br/>
+		</h2>
+		<div class="comentarios">
+				<h3>Respostas a Atividade</h3>
+				{% get_comment_list for item as comentarios %}
+				{% for comentario in comentarios %}
+				<div class="comentario">
+					{% if comentario.name %}
+						Nome: {{comentario.name}}<br/>
+					{% else %} 
+						<h1>Nenhuma 232respostaasasasa</h1>  <br/> 
+					{% endif %}
+					
+					{% if comentario.url %}
+						URL: {{comentario.url}}
+					{% endif %}<br/>
+
+					{{ comentario.comment|linebreaks}}
+					<hr/>
+				</div>
+				{% endfor %}
+				<h3>Enviar Resposta a Atividade</h3>
+				{% render_comment_form for item %}
+
+
+
+
+				
+		</div>
+	</li>
+{% empty %}
+	<li>Sem itens na lista</li>
+{% endfor %}
+
+</ul>
+{% endblock %}

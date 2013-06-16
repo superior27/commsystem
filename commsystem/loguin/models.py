@@ -11,14 +11,16 @@ class MyUser(models.Model):
 			('ver_todos_usuarios','Ver todos os usuarios'),
 			)
 
+"""Apaguei o model anterior estava muito ruim"""
 class Atividade(models.Model):
-	nome = models.CharField(max_length=50)
-	descricao = models.TextField(max_length=500)
 	dataInicial = models.DateField()
+	horaInicial = models.TimeField()
 	dataFinal = models.DateField()
-	conclusao = models.BooleanField()
-	fk_group = models.ForeignKey(Group)
-	
+	horaFinal = models.TimeField()
+	titulo = models.CharField(max_length=100)
+	descricao = models.TextField()
+	grupo = models.ForeignKey(Group)
+
 	def __unicode__(self):
-		return self.id_group
+		return u"%s - Inicio %s %s - Termino %s %s" %(self.titulo,self.dataInicial,self.horaInicial,self.dataFinal,self.horaFinal)
 	

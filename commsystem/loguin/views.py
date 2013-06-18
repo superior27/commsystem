@@ -67,11 +67,21 @@ def cadastrarUsuarioGrupo(request):
         if form.is_valid():
             Usuario = form.cleaned_data['Usuario']
             Grupo = form.cleaned_data['Grupo']
-
+            """
             usuarioOb = User.objects.get(id = Usuario)
             groupOb = Group.objects.get(id = Grupo)
             
             usuarioOb.groups.add(groupOb)
+            """
+
+            for userOb in Usuario:
+              for groupOb in Grupo:                
+                user = User.objects.get(id = userOb.id)
+                group = Group.objects.get(id = groupOb.id)
+                #user = usuarioOb.user
+                #group = grupoOb.groups
+                user.groups.add(group)
+              
 
             return HttpResponseRedirect("/cadastrarUsuarioGrupo/")
         else:

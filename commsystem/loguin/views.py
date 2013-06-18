@@ -83,6 +83,7 @@ def cadastrarUsuarioGrupo(request):
 
 
 """Apaguei a anterior estava muito ruim"""
+@login_required
 def atividade(request):
     if request.method == "POST":
         form = FormAtividade(request.POST, request.FILES)

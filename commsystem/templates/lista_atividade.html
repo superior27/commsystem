@@ -7,6 +7,11 @@
 <!DOCTYPE html>
 <html>
     <head>
+            <script src="{{ MEDIA_URL }}css/twitter/js/jquery-1.7.1.min.js"></script>
+        <script src="{{ MEDIA_URL }}css/twitter/js/jquery.validate.min.js"></script>
+        <script src="{{ MEDIA_URL }}css/twitter/js/bootstrap.min.js"></script>
+        <script src="{{ MEDIA_URL }}css/twitter/js/drop.min.js"></script>
+    
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title></title>
         <script src="{{ MEDIA_URL }}css/twitter/js/jquery-1.7.1.min.js"></script>
@@ -50,8 +55,6 @@
 <!--<h1>{{permissions}}</h1>-->
 <br>
 <br>
-                <legend> </legend>
-                <div> 
              
                 <h2><center>Responder Atividades</center></h2>
                 <legend></legend>
@@ -72,7 +75,7 @@
                 <legend></legend>
                 <legend> </legend>
 
-<div id = "register_form4">
+<center>
  <table border = "1"/>
         <br><br>
         <thead>
@@ -89,7 +92,7 @@
 		 <legend></legend>
 			<h3><b><font color="#838B83">Título da atividade: </b></font><i>{{ item.titulo}}<br/></i></h3>
 			<h3><b><font color="#8B7D7B">Descrição: </b></font><i> {{ item.descricao}}<br/></i></h3>
-				<h3><b><font color="#8B7D7B"> Data de Inicio: </b></font><i>{{ item.dataInicial}}<br/></i></h3>
+				<h3><b><font color="#8B7D7B"> Data de Início: </b></font><i>{{ item.dataInicial}}<br/></i></h3>
 				<h3><b><font color="#8B7D7B"> Data Final: </b></font><i> {{ item.dataFinal}}<br/></i></h3>
 		   <legend></legend>
           

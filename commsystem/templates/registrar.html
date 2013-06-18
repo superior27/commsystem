@@ -2,6 +2,10 @@
         <link href="{{ MEDIA_URL }}css/twitter/css/bootstrap.css" rel="stylesheet">
         <link href="{{ MEDIA_URL }}css/twitter/css/bootstrap-responsive.css" rel="stylesheet">
         <link href="{{ MEDIA_URL }}css/twitter/css/default.css" rel="stylesheet">
+        <script src="{{ MEDIA_URL }}css/twitter/js/jquery-1.7.1.min.js"></script>
+        <script src="{{ MEDIA_URL }}css/twitter/js/jquery.validate.min.js"></script>
+        <script src="{{ MEDIA_URL }}css/twitter/js/bootstrap.min.js"></script>
+        <script src="{{ MEDIA_URL }}css/twitter/js/drop.min.js"></script>
     
       <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
@@ -35,8 +39,8 @@
                 <legend></legend>
                 <legend> </legend>
 
-                
-              <form  id = "register_form3" method="POST">
+              <center>
+              <form method="POST">
 
 {% csrf_token %}
 

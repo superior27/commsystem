@@ -13,11 +13,11 @@ from models import Atividade
 
 #@permission_required('loguin.ver_todos_usuarios')
 @login_required
-def bemVindo(request):
+def bem_vindo(request):
     return render_to_response("bemvindo.html",{},
           context_instance=RequestContext(request))
     
-def leiaMais(request):
+def leia_mais(request):
     
      return render_to_response("leiaMais.html",{},
           context_instance=RequestContext(request))
@@ -34,7 +34,7 @@ def registrar(request):
 
           usuario.save()
 
-          return HttpResponseRedirect("/bemVindo/")
+          return render_to_response("salvo.html")
         else:
           return render_to_response("registrar.html",{'form':form}, 
               context_instance=RequestContext(request))
@@ -42,7 +42,7 @@ def registrar(request):
               context_instance=RequestContext(request))
 
 @login_required
-def tentativa(request):
+def criar_grupo(request):
 
     if request.method == "POST":   
         form = tentativa1(request.POST)
@@ -51,7 +51,7 @@ def tentativa(request):
         if form.is_valid():
           form.save()
             
-          return HttpResponseRedirect("/tentativa/")
+          return render_to_response("salvo.html")
         else:
             return render_to_response("grupo.html",{'form':form,},
              context_instance=RequestContext(request))
@@ -59,7 +59,27 @@ def tentativa(request):
              context_instance=RequestContext(request))
 
 @login_required
-def cadastrarUsuarioGrupo(request):
+def cadastrar_permissao_grupo(request):
+  if request.method == "POST":   
+        form = tentativa2(request.POST)
+        if form.is_valid():
+          Permissao = form.cleaned_data['Permissao3']
+          Grupo = form.cleaned_data['Grupo']
+          for permissionOb in Permissao:
+            for groupOb in Grupo:
+              permission = Permission.objects.get(id = permissionOb.id)
+              group = Group.objects.get(id = groupOb.id)
+              group.permissions.add(permission)
+            
+          return render_to_response("salvo.html")
+        else:
+            return render_to_response("cadastrar_permissao_grupo.html",{'form':form,},
+             context_instance=RequestContext(request))
+  return render_to_response("cadastrar_permissao_grupo.html",{'form':tentativa2()},
+           context_instance=RequestContext(request))
+
+@login_required
+def cadastrar_usuario_grupo(request):
 
     if request.method == "POST":   
         form = alterar_usuario(request.POST)
@@ -83,7 +103,7 @@ def cadastrarUsuarioGrupo(request):
                 user.groups.add(group)
               
 
-            return HttpResponseRedirect("/cadastrarUsuarioGrupo/")
+            return render_to_response("salvo.html")
         else:
             return render_to_response("cadastrarUsuario.html",{'form':form},
              context_instance=RequestContext(request))
@@ -115,7 +135,7 @@ def lista_atividade(request):
         form = FormName(request.POST, request.FILES) 
         
         if form.is_valid():
-            nome = form.cleaned_data['name']                     
+            nome = form.cleaned_data['name']                               
     form = FormName()   
     return render_to_response("lista_atividade.html",{ 'lista_itens':Atividade.objects.filter(grupo=request.user.groups.filter(name=nome)),'form':form,'groups':request.user.groups.all()},
               context_instance=RequestContext(request))

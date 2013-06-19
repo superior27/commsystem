@@ -1,18 +1,15 @@
-{% extends "base.html" %}
-
-{% block corpo %}
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="{{ MEDIA_URL }}css/twitter/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ MEDIA_URL }}css/twitter/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="{{ MEDIA_URL }}css/twitter/css/default.css" rel="stylesheet">
+  
         <script src="{{ MEDIA_URL }}css/twitter/js/jquery-1.7.1.min.js"></script>
         <script src="{{ MEDIA_URL }}css/twitter/js/jquery.validate.min.js"></script>
         <script src="{{ MEDIA_URL }}css/twitter/js/bootstrap.min.js"></script>
         <script src="{{ MEDIA_URL }}css/twitter/js/drop.min.js"></script>
-
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="{{ MEDIA_URL }}css/twitter/css/bootstrap.css" rel="stylesheet">
-        <link href="{{ MEDIA_URL }}css/twitter/css/bootstrap-responsive.css" rel="stylesheet">
-        <link href="{{ MEDIA_URL }}css/twitter/css/default.css" rel="stylesheet">
-    
-      <div class="navbar navbar-fixed-top">
+  
+  
+    <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -26,9 +23,9 @@
               <li ><a href="/bem_vindo">Início</a></li>
               <li><a href="/registrar">Cadastro de Funcionários</a></li>
               <li><a href="/criar_grupo">Cadastro de Grupos</a></li>
-              <li><a href="/cadastrar_permissao_grupo">Adicionar permissões ao grupo</a></li>
               <li><a href="/cadastrar_usuario_grupo">Adicionar usuario ao grupo</a></li>
-              <li  class ="active"><a href="/atividade/">Criar Atividade</a></li>
+              <li class ="active"><a href="/cadastrar_permissao_grupo">Adicionar permissões ao grupo</a></li>
+              <li><a href="/atividade/">Criar Atividade</a></li>
               <li><a href="/lista_atividade">Responder Atividades</a></li>
               <li><a href="/logout">Logout</a></li>
             </ul>
@@ -36,30 +33,34 @@
         </div>
       </div>
     </div>
-<br>
-<br>
-                <legend> </legend>
+
+<br><br><br>
                 <div> 
-             
-                      <h2><center>Criar novas atividades</center></h2>
+                   <center>
+                      <h2><center>Cadastros de Grupos</center></h2>
                 <legend></legend>
                 <legend> </legend>
-<center>
 
-<form action="" method="post">
-	{% csrf_token %}
-	{{form.as_p}}
-	{{lista_item.as_p}}
-	<br>
-	<button class="btn btn-primary" type ="submit">Adicionar</button>
-</form>
-
+                <form method="POST">
+                {% csrf_token %}
+	            
+              
+              {{ form.as_p }}
+              {{n3}}
+	            <br>
+                <div class="control-group">
+                    <div class="controls">
+                        <button type="submit" class="btn btn-primary">Cadastrar</button>
+                    </div>
+                </div>
+        </form>
+	
+	<!-- <tr><td colspan="2"><button type="submit">Criar</button> -->
+	 <br><br><br>
+	 </center>
     <div class="container">
       <hr>
       <footer>
         <p>&copy; CommSysytem - Jean Turet, Lucas Lins e Matheus Farias</p>
       </footer>
       </div>
-
-
-{% endblock %}

@@ -15,18 +15,19 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     (r'^admin/', include(admin.site.urls)),
-    (r'^$',"loguin.views.bemVindo"),
+    (r'^$',"loguin.views.bem_vindo"),
     (r'^login/',"django.contrib.auth.views.login",{"template_name":"login.html"}),
     (r'^logout/',"django.contrib.auth.views.logout_then_login",{"login_url":"/login/"}),
     (r'^media/(.*)$', 'django.views.static.serve',{'document_root': settings.MEDIA_ROOT}),
     (r'^registrar/$','loguin.views.registrar'),
-    (r'^bemVindo/$','loguin.views.bemVindo'),
-    (r'^tentativa/$','loguin.views.tentativa'),
-    (r'^cadastrarUsuarioGrupo/$','loguin.views.cadastrarUsuarioGrupo'),
+    (r'^bem_vindo/$','loguin.views.bem_vindo'),
+    (r'^criar_grupo/$','loguin.views.criar_grupo'),
+    (r'^cadastrar_usuario_grupo/$','loguin.views.cadastrar_usuario_grupo'),
     (r'^atividade/$','loguin.views.atividade'),
     (r'^lista_atividade/$','loguin.views.lista_atividade'),
-    (r'^leiaMais/$','loguin.views.leiaMais'),
+    (r'^leia_mais/$','loguin.views.leia_mais'),
     (r'^comments/',include('django.contrib.comments.urls')),
+    (r'^cadastrar_permissao_grupo/$','loguin.views.cadastrar_permissao_grupo')
 )
 """
 if settings.DEBUG:

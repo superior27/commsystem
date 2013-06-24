@@ -1,6 +1,43 @@
 {% extends "base.html" %}
 
 {% block corpo %}
-<p>Dados salvos com sucesso.</p>
+
+          <div class="bs-docs-example">
+            <div id="navbar-example" class="navbar navbar-static">
+              <div class="navbar-inner">
+                <div class="container" style="width: auto;">
+                  <a class="brand" href="#">CommSystem</a>
+                  <ul class="nav" role="navigation">
+                  <li class ="active"><a href="/bem_vindo">Início</a></li>
+                  <li><a href="/registrar">Cadastro de Funcionários</a></li>
+                    <li class="dropdown">
+                      <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Grupos <b class="caret"></b></a>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                        <li><a tabindex="-1" href="/criar_grupo">Criar Grupos</a></li>
+                        <li><a tabindex="-1" href="/cadastrar_permissao_grupo">Adicionar Permissões</a></li>
+                        <li><a tabindex="-1" href="/cadastrar_usuario_grupo">Adcionar Usuários</a></li>
+                      </ul>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" id="drop2" role="button" class="dropdown-toggle" data-toggle="dropdown">Atividades<b class="caret"></b></a>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
+                        <li><a tabindex="-1" href="/atividade/">Criar nova Atividade</a></li>
+                        <li><a tabindex="-1" href="/lista_atividade"">Responder Atividade</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <ul class="nav pull-right">
+                        <li><a tabindex="-1" href="/logout/">Logout</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div> 
+          </div> 
+
+<center>
+<h3>Dados salvos com sucesso.</h3>
+
 <p><a href="/">Voltar para o inicio</a></p>
 {% endblock %}

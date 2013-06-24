@@ -7,18 +7,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-            <script src="{{ MEDIA_URL }}css/twitter/js/jquery-1.7.1.min.js"></script>
-        <script src="{{ MEDIA_URL }}css/twitter/js/jquery.validate.min.js"></script>
-        <script src="{{ MEDIA_URL }}css/twitter/js/bootstrap.min.js"></script>
-        <script src="{{ MEDIA_URL }}css/twitter/js/drop.min.js"></script>
-    
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title></title>
         <script src="{{ MEDIA_URL }}css/twitter/js/jquery-1.7.1.min.js"></script>
         <script src="{{ MEDIA_URL }}css/twitter/js/jquery.validate.min.js"></script>
         <script src="{{ MEDIA_URL }}css/twitter/js/bootstrap.min.js"></script>
         <script src="{{ MEDIA_URL }}css/twitter/js/drop.min.js"></script>
-
+        <script src="{{ MEDIA_URL }}css/twitter/js/drop.js"></script>
 
         <link href="{{ MEDIA_URL }}css/twitter/css/bootstrap.min.css" rel="stylesheet">
         <link href="{{ MEDIA_URL }}css/twitter/css/bootstrap-responsive.css" rel="stylesheet">
@@ -26,58 +21,62 @@
     </head>
     <body>
 
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="#">CommSystem</a>
-          <div class="nav-collapse">
-            <ul class="nav">
-              <li ><a href="/bem_vindo">Início</a></li>
-              <li><a href="/registrar">Cadastro de Funcionários</a></li>
-              <li><a href="/criar_grupo">Cadastro de Grupos</a></li>
-              <li><a href="/cadastrar_permissao_grupo">Adicionar permissões ao grupo</a></li>
-              <li><a href="/cadastrar_usuario_grupo">Adicionar usuario ao grupo</a></li>
-              <li><a href="/atividade/">Criar Atividade</a></li>
-              <li class ="active"><a href="/lista_atividade">Responder Atividades</a></li>
-              <li><a href="/logout">Logout</a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
-    <br>
-
-<ul>
-<!--<h1>{{permissions}}</h1>-->
+          <div class="bs-docs-example">
+            <div id="navbar-example" class="navbar navbar-static">
+              <div class="navbar-inner">
+                <div class="container" style="width: auto;">
+                  <a class="brand" href="#">CommSystem</a>
+                  <ul class="nav" role="navigation">
+                  <li><a href="/bem_vindo">Início</a></li>
+                  <li><a href="/registrar">Cadastro de Funcionários</a></li>
+                    <li class="dropdown">
+                      <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Grupos <b class="caret"></b></a>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                        <li><a tabindex="-1" href="/criar_grupo">Criar Grupos</a></li>
+                        <li><a tabindex="-1" href="/cadastrar_permissao_grupo">Adicionar Permissões</a></li>
+                        <li><a tabindex="-1" href="/cadastrar_usuario_grupo">Adcionar Usuários</a></li>
+                      </ul>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" id="drop2" role="button" class="dropdown-toggle" data-toggle="dropdown">Atividades<b class="caret"></b></a>
+                      <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
+                        <li><a tabindex="-1" href="/atividade/">Criar nova Atividade</a></li>
+                        <li class = "active"><a tabindex="-1" href="/lista_atividade"">Responder Atividade</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <ul class="nav pull-right">
+                        <li><a tabindex="-1" href="/logout/">Logout</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div> 
+          
 <br>
-<br>
+          <div> 
              
                 <h2><center>Responder Atividades</center></h2>
                 <legend></legend>
                 <legend> </legend>
 
-<center>	
-<form action="" method="post">
-	{% csrf_token %}
+		<center>	
+			<form action="" method="post">
+				{% csrf_token %}
 	
+			<h4><b> Seus grupos são: </b><i>{{groups}}</i></h4>
+			<br>
+			{{form.as_p}}
+			<button class="btn btn-primary" type ="submit">Acessar</button>
+		</form>
 
-	<h4><b> Seus grupos são: </b><i>{{groups}}</i></h4>
-	<br>
-	{{form.as_p}}
-	<button class="btn btn-primary" type ="submit">Acessar</button>
-</form>
-
-</center>
+		</center>
                 <legend></legend>
-                <legend> </legend>
+                <legend></legend>
 
-<center>
- <table border = "1"/>
+		<center>
+ 	<table border = "1"/>
         <br><br>
         <thead>
         <th colspan = "10"/>

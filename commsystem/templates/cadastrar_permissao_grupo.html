@@ -1,4 +1,9 @@
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+{% extends 'base.html' %}
+
+{% block corpo %}
+{% csrf_token %}
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href="{{ MEDIA_URL }}css/twitter/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ MEDIA_URL }}css/twitter/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="{{ MEDIA_URL }}css/twitter/css/default.css" rel="stylesheet">
@@ -7,15 +12,14 @@
         <script src="{{ MEDIA_URL }}css/twitter/js/jquery.validate.min.js"></script>
         <script src="{{ MEDIA_URL }}css/twitter/js/bootstrap.min.js"></script>
         <script src="{{ MEDIA_URL }}css/twitter/js/drop.min.js"></script>
+  </head>
   
-  
-          <div class="bs-docs-example">
             <div id="navbar-example" class="navbar navbar-static">
               <div class="navbar-inner">
                 <div class="container" style="width: auto;">
                   <a class="brand" href="#">CommSystem</a>
                   <ul class="nav" role="navigation">
-                  <li><a href="/bem_vindo">Início</a></li>
+                  <li><a href="/bem_vindo">Inicio</a></li>
                   <li><a href="/registrar">Cadastro de Funcionários</a></li>
                     <li class="dropdown">
                       <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">Grupos <b class="caret"></b></a>
@@ -72,3 +76,5 @@
         <p>&copy; CommSysytem - Jean Turet, Lucas Lins e Matheus Farias</p>
       </footer>
       </div>
+      
+      {% endblock %}

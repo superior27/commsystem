@@ -27,7 +27,8 @@ urlpatterns = patterns('',
     (r'^lista_atividade/$','loguin.views.lista_atividade'),
     (r'^leia_mais/$','loguin.views.leia_mais'),
     (r'^comments/',include('django.contrib.comments.urls')),
-    (r'^cadastrar_permissao_grupo/$','loguin.views.cadastrar_permissao_grupo')
+    (r'^cadastrar_permissao_grupo/$','loguin.views.cadastrar_permissao_grupo'),
+    (r'^quant_atividade/$','loguin.views.quant_atividade'),
 )
 """
 if settings.DEBUG:

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block corpo %}
+
+<form action="" method="post">
+	{% csrf_token %}
+	{{form2.as_p}}
+	Este funcionário tem: {{quantComment}} atividades respondidas<br/>
+	<button type ="submit">Ok</button>
+</form>
+
+
+
+
+{% endblock %}

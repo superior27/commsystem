@@ -51,3 +51,7 @@ class FormName (forms.Form):
     class Meta:
         fields = ('name')
 
+class FormChoiceUser (forms.Form):
+    name = forms.ModelChoiceField(queryset=User.objects.all(),label="Escolha o usuário e verifique a quantidade de atividades feitas")
+    class Meta:
+        fields = ('name')
